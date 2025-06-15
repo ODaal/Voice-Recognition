@@ -6,7 +6,6 @@ import Constants as c
 
 
 
-
 def read_audio(filename, sample_rate):
 	audio, sr = librosa.load(filename, sr=sample_rate, mono=True)
 	audio = audio.flatten()
@@ -18,6 +17,7 @@ def load_wav(filename, sample_rate):
 	audio = audio.flatten()
 	return audio
 
+	############################## I am not the Owner of this code #########################################
 
 def normalize_frames(m,epsilon=1e-12):
 	return np.array([(v - np.mean(v)) / max(np.std(v),epsilon) for v in m])
