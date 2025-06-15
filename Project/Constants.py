@@ -12,8 +12,3 @@ MAX_SEC = 10
 WEIGHTS_FILE = "weights.h5"
 COST_METRIC = "cosine"  # euclidean or cosine
 INPUT_SHAPE=(NUM_FFT,None,1)
-
-# IO
-ENROLL_LIST_FILE = "cfg/libri-dev-clean_batch_enroll_list.csv"
-TEST_LIST_FILE = "cfg/libri-dev-clean_batch_test_list.csv"
-RESULT_FILE = "res/results.csv"
