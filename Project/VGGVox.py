@@ -55,36 +55,6 @@ def get_embeddings_from_list_file(model, list_file, max_sec):
 	return result[['filename','speaker','embedding']]
 
 
-def get_id_result():
-	print("Loading model weights from [{}]....".format(c.WEIGHTS_FILE))
-	model = vggvox_model()
-	model.load_weights(c.WEIGHTS_FILE)
-	model.summary()
-
-	print("Processing enroll samples....")
-	enroll_result = get_embeddings_from_list_file(model, c.ENROLL_LIST_FILE, c.MAX_SEC)
-	enroll_embs = np.array([emb.tolist() for emb in enroll_result['embedding']])
-	speakers = enroll_result['speaker']
-
-	print("Processing test samples....")
-	test_result = get_embeddings_from_list_file(model, c.TEST_LIST_FILE, c.MAX_SEC)
-	test_embs = np.array([emb.tolist() for emb in test_result['embedding']])
-
-	print("Comparing test samples against enroll samples....")
-	distances = pd.DataFrame(cdist(test_embs, enroll_embs, metric=c.COST_METRIC), columns=speakers)
-
-	scores = pd.read_csv(c.TEST_LIST_FILE, delimiter=",",header=0,names=['test_file','test_speaker'])
-	scores = pd.concat([scores, distances],axis=1)
-	scores['result'] = scores[speakers].idxmin(axis=1)
-	scores['correct'] = (scores['result'] == scores['test_speaker'])*1. # bool to int
-
-	print("Writing outputs to [{}]....".format(c.RESULT_FILE))
-	result_dir = os.path.dirname(c.RESULT_FILE)
-	if not os.path.exists(result_dir):
-	    os.makedirs(result_dir)
-	with open(c.RESULT_FILE, 'w') as f:
-		scores.to_csv(f, index=False)
-
 def register_new_user(model, user_audio_path, user_name, max_sec):
     print(f"Registering new user: {user_name}")
     buckets = build_buckets(max_sec, c.BUCKET_STEP, c.FRAME_STEP)
