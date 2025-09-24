@@ -12,6 +12,7 @@ def read_audio(filename, sample_rate):
     return audio
 
 ## For mobilee app system integration
+"""
 def read_audio(filename, sample_rate):
 	try:
 		with wave.open(filename, 'rb') as wf:
@@ -44,7 +45,7 @@ def read_audio(filename, sample_rate):
 	except Exception as e:
 		print(f"An unexpected error occurred in read_audio: {e}")
 		return None
-
+"""
 
 
 def normalize_frames(frames,epsilon=1e-12):
@@ -109,4 +110,5 @@ def read_and_process_audio(filename, buckets):
 	out = fft_norm[:,fix:fix+rsize]
 
 	return out
+
 
