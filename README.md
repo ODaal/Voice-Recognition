@@ -53,10 +53,8 @@ It uses the **VGGVox speaker verification model** (imported with pretrained weig
 ---
 
 ## 🔮 Future Improvements
-- Add **face recognition** for multi-factor authentication.  
-- Expand voice command set (lights, thermostat, appliances).  
-- Improve wake-word detection with a custom keyword spotter.  
-- Mobile/IoT integration for full smart home deployment.  
+- Add **face recognition** for multi-factor authentication.   
+- Mobile integration for full smart home deployment.  
 
 ---
 
