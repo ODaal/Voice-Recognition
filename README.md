@@ -37,13 +37,6 @@ It uses the **VGGVox speaker verification model** (imported with pretrained weig
      - "Activate the security" → 🔐 Security ON  
      - "Desactive the security" → 🔓 Security OFF  
 
-3. **User Management**  
-   - Register a new user with:  
-     ```python
-     register_new_user("recordings/user.wav", "Alice", 10)
-     ```
-   - Embedding is stored in `Embeddings.csv`.
-
 ---
 
 ## 🧩 Project Structure
